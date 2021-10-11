@@ -1,6 +1,6 @@
 # AdminEmployees
 
-Emplooyes Manager System
+Employees Manager System
 
 ## Description
 
