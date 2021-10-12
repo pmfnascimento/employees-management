@@ -42,7 +42,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="/employees">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Employees Management</span></a>
             </li>
