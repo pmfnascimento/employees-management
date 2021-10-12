@@ -9,6 +9,6 @@ class CountryController extends Controller
 {
     public function index()
     {
-        return view('countries.index')
+        return view('countries.index');
     }
 }
