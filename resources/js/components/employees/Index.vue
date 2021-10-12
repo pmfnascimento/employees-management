@@ -1,8 +1,8 @@
 <template>
   <div>
-          <!-- Page Heading -->
+
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Countries</h1>
+        <h1 class="h3 mb-0 text-gray-800">Employees</h1>
     </div>
     <div class="row justify-content-center">
         <div class="col-md-9">
@@ -31,7 +31,7 @@
                             </form>
                         </div>
                         <div>
-                            <a href="" class="btn btn-info">Create</a>
+                            <router-link :to="{name: 'EmployeesCreate'}" href="" class="btn btn-info">Create</router-link>
                         </div>
 
                         </div>
