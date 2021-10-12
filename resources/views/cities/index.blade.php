@@ -56,7 +56,7 @@
                             @foreach ($cities as $citie)
                                 <tr>
                                     <th scope="row">{{ $citie->id }}</th>
-                                    <td>{{ $citie->state->state_name }}</td>
+                                    <td>{{ $citie->state->name }}</td>
                                     <td>{{ $citie->name }}</td>
                                     <td>
                                         <a href="{{ route('cities.edit', $citie->id) }}"

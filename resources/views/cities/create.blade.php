@@ -21,7 +21,7 @@
                 <label for="state_code" class="col-md-4 col-form-label text-md-right">{{ __('Country Code') }}</label>
                 <div class="col-md-6">
                     <select class="form-control @error('state_code') is-invalid @enderror" id="state_code" name="state_code" autocomplete="state_code" autofocus>
-                        <option value="">Select an Country</option>
+                        <option value="">Select an State</option>
                         @foreach ($states as $state)
                             <option value="{{ $state->id }}" @if (old('state_code') == $state->id) selected="selected" @endif>{{ $state->name }}</option>
                         @endforeach

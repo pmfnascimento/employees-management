@@ -2214,6 +2214,102 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -2224,7 +2320,20 @@ __webpack_require__.r(__webpack_exports__);
       countries: [],
       states: [],
       departements: [],
-      cities: []
+      cities: [],
+      form: {
+        first_name: "",
+        last_name: "",
+        middle_name: "",
+        address: "",
+        country_id: "",
+        state_id: "",
+        city_id: "",
+        department_id: "",
+        zip_code: "",
+        birthdate: null,
+        date_hired: null
+      }
     };
   },
   created: function created() {
@@ -2234,11 +2343,20 @@ __webpack_require__.r(__webpack_exports__);
     getCountries: function getCountries() {
       var _this = this;
 
-      axios.get('/api/employees/countries').then(function (res) {
+      axios.get("/api/employees/countries").then(function (res) {
         _this.countries = res.data;
+      })["catch"](function (error) {
+        console.log("Error");
+      });
+    },
+    getStates: function getStates() {
+      var _this2 = this;
+
+      axios.get("/api/employees/" + this.form.country_id + "/states").then(function (res) {
+        _this2.states = res.data;
         console.log(res.data);
       })["catch"](function (error) {
-        console.log('Error');
+        console.log("Error");
       });
     }
   }
@@ -38060,7 +38178,7 @@ var render = function() {
         "div",
         { staticClass: "card-header" },
         [
-          _vm._v("\n        Create new Employee\n        "),
+          _vm._v("\n      Create new Employee\n      "),
           _c(
             "router-link",
             {
@@ -38075,23 +38193,437 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
         _c("form", { attrs: { method: "POST", action: "" } }, [
-          _vm._m(1),
+          _c("div", { staticClass: "form-group row" }, [
+            _c(
+              "label",
+              {
+                staticClass: "col-md-4 col-form-label text-md-right",
+                attrs: { for: "first_name" }
+              },
+              [_vm._v("First Name")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.first_name,
+                    expression: "form.first_name"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { id: "first_name", type: "text", autofocus: "" },
+                domProps: { value: _vm.form.first_name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "first_name", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm._m(1)
+            ])
+          ]),
           _vm._v(" "),
-          _vm._m(2),
+          _c("div", { staticClass: "form-group row" }, [
+            _c(
+              "label",
+              {
+                staticClass: "col-md-4 col-form-label text-md-right",
+                attrs: { for: "middle_name" }
+              },
+              [_vm._v("Middle Name")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.middle_name,
+                    expression: "form.middle_name"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { id: "middle_name", type: "text", autofocus: "" },
+                domProps: { value: _vm.form.middle_name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "middle_name", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm._m(2)
+            ])
+          ]),
           _vm._v(" "),
-          _vm._m(3),
+          _c("div", { staticClass: "form-group row" }, [
+            _c(
+              "label",
+              {
+                staticClass: "col-md-4 col-form-label text-md-right",
+                attrs: { for: "last_name" }
+              },
+              [_vm._v("Last Name")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.last_name,
+                    expression: "form.last_name"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { id: "last_name", type: "text", autofocus: "" },
+                domProps: { value: _vm.form.last_name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "last_name", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm._m(3)
+            ])
+          ]),
           _vm._v(" "),
-          _vm._m(4),
+          _c("div", { staticClass: "form-group row" }, [
+            _c(
+              "label",
+              {
+                staticClass: "col-md-4 col-form-label text-md-right",
+                attrs: { for: "address" }
+              },
+              [_vm._v("Address")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.address,
+                    expression: "form.address"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { id: "address", type: "text", autofocus: "" },
+                domProps: { value: _vm.form.address },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "address", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm._m(4)
+            ])
+          ]),
           _vm._v(" "),
-          _vm._m(5),
+          _c("div", { staticClass: "form-group row" }, [
+            _c(
+              "label",
+              {
+                staticClass: "col-md-4 col-form-label text-md-right",
+                attrs: { for: "country" }
+              },
+              [_vm._v("Country")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6" }, [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.country_id,
+                      expression: "form.country_id"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { autofocus: "" },
+                  on: {
+                    change: [
+                      function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.form,
+                          "country_id",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      },
+                      function($event) {
+                        return _vm.getStates()
+                      }
+                    ]
+                  }
+                },
+                _vm._l(_vm.countries, function(country) {
+                  return _c(
+                    "option",
+                    { key: country.id, domProps: { value: country.id } },
+                    [
+                      _vm._v(
+                        "\n                " +
+                          _vm._s(country.name) +
+                          "\n              "
+                      )
+                    ]
+                  )
+                }),
+                0
+              ),
+              _vm._v(" "),
+              _vm._m(5)
+            ])
+          ]),
           _vm._v(" "),
-          _vm._m(6),
+          _c("div", { staticClass: "form-group row" }, [
+            _c(
+              "label",
+              {
+                staticClass: "col-md-4 col-form-label text-md-right",
+                attrs: { for: "state" }
+              },
+              [_vm._v("State")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6" }, [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.state_id,
+                      expression: "form.state_id"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { id: "state", autofocus: "" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.form,
+                        "state_id",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                _vm._l(_vm.states, function(state) {
+                  return _c(
+                    "option",
+                    { key: state.id, domProps: { value: state.id } },
+                    [
+                      _vm._v(
+                        "\n                " +
+                          _vm._s(state.name) +
+                          "\n              "
+                      )
+                    ]
+                  )
+                }),
+                0
+              ),
+              _vm._v(" "),
+              _vm._m(6)
+            ])
+          ]),
           _vm._v(" "),
-          _vm._m(7),
+          _c("div", { staticClass: "form-group row" }, [
+            _c(
+              "label",
+              {
+                staticClass: "col-md-4 col-form-label text-md-right",
+                attrs: { for: "department" }
+              },
+              [_vm._v("Department")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6" }, [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.department_id,
+                      expression: "form.department_id"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { id: "department", autofocus: "" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.form,
+                        "department_id",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "" } }, [
+                    _vm._v("Select an Country")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "" } }, [_vm._v("x")])
+                ]
+              ),
+              _vm._v(" "),
+              _vm._m(7)
+            ])
+          ]),
           _vm._v(" "),
-          _vm._m(8),
+          _c("div", { staticClass: "form-group row" }, [
+            _c(
+              "label",
+              {
+                staticClass: "col-md-4 col-form-label text-md-right",
+                attrs: { for: "city" }
+              },
+              [_vm._v("City")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6" }, [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.city_id,
+                      expression: "form.city_id"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { id: "city", autofocus: "" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.form,
+                        "city_id",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "" } }, [
+                    _vm._v("Select an Country")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "" } }, [_vm._v("x")])
+                ]
+              ),
+              _vm._v(" "),
+              _vm._m(8)
+            ])
+          ]),
           _vm._v(" "),
-          _vm._m(9),
+          _c("div", { staticClass: "form-group row" }, [
+            _c(
+              "label",
+              {
+                staticClass: "col-md-4 col-form-label text-md-right",
+                attrs: { for: "zip_code" }
+              },
+              [_vm._v("Zip Code")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.zip_code,
+                    expression: "form.zip_code"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { id: "zip_code", type: "text", autofocus: "" },
+                domProps: { value: _vm.form.zip_code },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "zip_code", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm._m(9)
+            ])
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "form-group row" }, [
             _c(
@@ -38106,7 +38638,18 @@ var render = function() {
             _c(
               "div",
               { staticClass: "col-md-6" },
-              [_c("datepicker", { attrs: { "input-class": "form-control" } })],
+              [
+                _c("datepicker", {
+                  attrs: { "input-class": "form-control" },
+                  model: {
+                    value: _vm.form.birthdate,
+                    callback: function($$v) {
+                      _vm.$set(_vm.form, "birthdate", $$v)
+                    },
+                    expression: "form.birthdate"
+                  }
+                })
+              ],
               1
             )
           ]),
@@ -38124,7 +38667,18 @@ var render = function() {
             _c(
               "div",
               { staticClass: "col-md-6" },
-              [_c("datepicker", { attrs: { "input-class": "form-control" } })],
+              [
+                _c("datepicker", {
+                  attrs: { "input-class": "form-control" },
+                  model: {
+                    value: _vm.form.date_hired,
+                    callback: function($$v) {
+                      _vm.$set(_vm.form, "date_hired", $$v)
+                    },
+                    expression: "form.date_hired"
+                  }
+                })
+              ],
               1
             )
           ]),
@@ -38156,343 +38710,91 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c(
-        "label",
-        {
-          staticClass: "col-md-4 col-form-label text-md-right",
-          attrs: { for: "first_name" }
-        },
-        [_vm._v("First Name")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-6" }, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            id: "first_name",
-            type: "text",
-            name: "first_name",
-            autocomplete: "first_name",
-            autofocus: ""
-          }
-        }),
-        _vm._v(" "),
-        _c(
-          "span",
-          { staticClass: "invalid-feedback", attrs: { role: "alert" } },
-          [_c("strong")]
-        )
-      ])
-    ])
+    return _c(
+      "span",
+      { staticClass: "invalid-feedback", attrs: { role: "alert" } },
+      [_c("strong")]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c(
-        "label",
-        {
-          staticClass: "col-md-4 col-form-label text-md-right",
-          attrs: { for: "middle_name" }
-        },
-        [_vm._v("Middle Name")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-6" }, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            id: "middle_name",
-            type: "text",
-            name: "middle_name",
-            autocomplete: "middle_name",
-            autofocus: ""
-          }
-        }),
-        _vm._v(" "),
-        _c(
-          "span",
-          { staticClass: "invalid-feedback", attrs: { role: "alert" } },
-          [_c("strong")]
-        )
-      ])
-    ])
+    return _c(
+      "span",
+      { staticClass: "invalid-feedback", attrs: { role: "alert" } },
+      [_c("strong")]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c(
-        "label",
-        {
-          staticClass: "col-md-4 col-form-label text-md-right",
-          attrs: { for: "last_name" }
-        },
-        [_vm._v("Last Name")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-6" }, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            id: "last_name",
-            type: "text",
-            name: "last_name",
-            autocomplete: "last_name",
-            autofocus: ""
-          }
-        }),
-        _vm._v(" "),
-        _c(
-          "span",
-          { staticClass: "invalid-feedback", attrs: { role: "alert" } },
-          [_c("strong")]
-        )
-      ])
-    ])
+    return _c(
+      "span",
+      { staticClass: "invalid-feedback", attrs: { role: "alert" } },
+      [_c("strong")]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c(
-        "label",
-        {
-          staticClass: "col-md-4 col-form-label text-md-right",
-          attrs: { for: "address" }
-        },
-        [_vm._v("Address")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-6" }, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            id: "address",
-            type: "text",
-            name: "address",
-            autocomplete: "address",
-            autofocus: ""
-          }
-        }),
-        _vm._v(" "),
-        _c(
-          "span",
-          { staticClass: "invalid-feedback", attrs: { role: "alert" } },
-          [_c("strong")]
-        )
-      ])
-    ])
+    return _c(
+      "span",
+      { staticClass: "invalid-feedback", attrs: { role: "alert" } },
+      [_c("strong")]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c(
-        "label",
-        {
-          staticClass: "col-md-4 col-form-label text-md-right",
-          attrs: { for: "country" }
-        },
-        [_vm._v("Country")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-6" }, [
-        _c(
-          "select",
-          {
-            staticClass: "form-control",
-            attrs: {
-              id: "country",
-              name: "country",
-              autocomplete: "country",
-              autofocus: ""
-            }
-          },
-          [
-            _c("option", { attrs: { value: "" } }, [
-              _vm._v("Select an Country")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "" } }, [_vm._v("x")])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "span",
-          { staticClass: "invalid-feedback", attrs: { role: "alert" } },
-          [_c("strong")]
-        )
-      ])
-    ])
+    return _c(
+      "span",
+      { staticClass: "invalid-feedback", attrs: { role: "alert" } },
+      [_c("strong")]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c(
-        "label",
-        {
-          staticClass: "col-md-4 col-form-label text-md-right",
-          attrs: { for: "state" }
-        },
-        [_vm._v("State")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-6" }, [
-        _c(
-          "select",
-          {
-            staticClass: "form-control",
-            attrs: {
-              id: "state",
-              name: "state",
-              autocomplete: "state",
-              autofocus: ""
-            }
-          },
-          [
-            _c("option", { attrs: { value: "" } }, [
-              _vm._v("Select an Country")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "" } }, [_vm._v("x")])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "span",
-          { staticClass: "invalid-feedback", attrs: { role: "alert" } },
-          [_c("strong")]
-        )
-      ])
-    ])
+    return _c(
+      "span",
+      { staticClass: "invalid-feedback", attrs: { role: "alert" } },
+      [_c("strong")]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c(
-        "label",
-        {
-          staticClass: "col-md-4 col-form-label text-md-right",
-          attrs: { for: "department" }
-        },
-        [_vm._v("Department")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-6" }, [
-        _c(
-          "select",
-          {
-            staticClass: "form-control",
-            attrs: {
-              id: "department",
-              name: "department",
-              autocomplete: "department",
-              autofocus: ""
-            }
-          },
-          [
-            _c("option", { attrs: { value: "" } }, [
-              _vm._v("Select an Country")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "" } }, [_vm._v("x")])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "span",
-          { staticClass: "invalid-feedback", attrs: { role: "alert" } },
-          [_c("strong")]
-        )
-      ])
-    ])
+    return _c(
+      "span",
+      { staticClass: "invalid-feedback", attrs: { role: "alert" } },
+      [_c("strong")]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c(
-        "label",
-        {
-          staticClass: "col-md-4 col-form-label text-md-right",
-          attrs: { for: "city" }
-        },
-        [_vm._v("City")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-6" }, [
-        _c(
-          "select",
-          {
-            staticClass: "form-control",
-            attrs: {
-              id: "city",
-              name: "city",
-              autocomplete: "city",
-              autofocus: ""
-            }
-          },
-          [
-            _c("option", { attrs: { value: "" } }, [
-              _vm._v("Select an Country")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "" } }, [_vm._v("x")])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "span",
-          { staticClass: "invalid-feedback", attrs: { role: "alert" } },
-          [_c("strong")]
-        )
-      ])
-    ])
+    return _c(
+      "span",
+      { staticClass: "invalid-feedback", attrs: { role: "alert" } },
+      [_c("strong")]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c(
-        "label",
-        {
-          staticClass: "col-md-4 col-form-label text-md-right",
-          attrs: { for: "zip_code" }
-        },
-        [_vm._v("Zip Code")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-6" }, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            id: "zip_code",
-            type: "text",
-            name: "zip_code",
-            autocomplete: "zip_code",
-            autofocus: ""
-          }
-        }),
-        _vm._v(" "),
-        _c(
-          "span",
-          { staticClass: "invalid-feedback", attrs: { role: "alert" } },
-          [_c("strong")]
-        )
-      ])
-    ])
+    return _c(
+      "span",
+      { staticClass: "invalid-feedback", attrs: { role: "alert" } },
+      [_c("strong")]
+    )
   },
   function() {
     var _vm = this
@@ -38506,11 +38808,7 @@ var staticRenderFns = [
             staticClass: "btn btn-info float-right",
             attrs: { type: "submit" }
           },
-          [
-            _vm._v(
-              "\n                        Create Employee\n                    "
-            )
-          ]
+          [_vm._v("\n              Create Employee\n            ")]
         )
       ])
     ])
@@ -56479,7 +56777,7 @@ __vue_render__$4._withStripped = true;
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
+module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\laragon\\\\www\\\\employees-management"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"C:\\\\laragon\\\\www\\\\employees-management","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
 
 /***/ })
 
