@@ -11,6 +11,7 @@
 <div class="card">
     <div class="card-header">
         Create new User
+        <a href="{{ route('countries.index') }}" class="btn btn-info float-right">Back</a>
     </div>
     <div class="card-body">
 

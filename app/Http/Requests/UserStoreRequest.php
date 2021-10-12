@@ -31,4 +31,18 @@ class UserStoreRequest extends FormRequest
             'password' => ['required', 'string', 'min:8'],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'username.required' => 'Username Code is required.',
+            'first_name.required' => 'First Name is required.',
+            'last_name.required' => 'Last Name is required.',
+            'email.required' => 'Email is required.',
+            'password.required' => 'Password is required.',
+            'password.min' => 'Password min 8 chars is required.',
+            'email.unique' => 'Email is already in our database is required.',
+            'username.unique' => 'Username is already in our database is required.',
+        ];
+    }
 }

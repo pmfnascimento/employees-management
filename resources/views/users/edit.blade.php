@@ -93,7 +93,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-6 col-sm-6 col-md-3 offset-md-4 text-right">
-                                <form action="{{ route('users.destroy', $user->id) }}">
+                                <form method="POST" action="{{ route('users.destroy', $user->id) }}">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-primary btn-block" type="submit">Delete
