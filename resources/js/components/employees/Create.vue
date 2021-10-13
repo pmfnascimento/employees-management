@@ -128,6 +128,7 @@
                 id="state"
                 v-model="form.state_id"
                 autofocus
+                @change="getCities()"
               >
                 <option
                   v-for="state in states"
@@ -138,6 +139,27 @@
                 </option>
               </select>
 
+              <span class="invalid-feedback" role="alert">
+                <strong></strong>
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="city" class="col-md-4 col-form-label text-md-right"
+              >City</label
+            >
+            <div class="col-md-6">
+              <select
+                class="form-control"
+                id="city"
+                v-model="form.city_id"
+                autofocus
+              >
+                <option v-for="city in cities" :key="city.id" :value="city.id">
+                  {{ city.name }}
+                </option>
+              </select>
               <span class="invalid-feedback" role="alert">
                 <strong></strong>
               </span>
@@ -157,28 +179,9 @@
                 v-model="form.department_id"
                 autofocus
               >
-                <option value="">Select an Country</option>
-                <option value="">x</option>
-              </select>
-              <span class="invalid-feedback" role="alert">
-                <strong></strong>
-              </span>
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <label for="city" class="col-md-4 col-form-label text-md-right"
-              >City</label
-            >
-            <div class="col-md-6">
-              <select
-                class="form-control"
-                id="city"
-                v-model="form.city_id"
-                autofocus
-              >
-                <option value="">Select an Country</option>
-                <option value="">x</option>
+                <option v-for="department in departments" :key="department.id" :value="department.id">
+                  {{ department.name }}
+                </option>
               </select>
               <span class="invalid-feedback" role="alert">
                 <strong></strong>
@@ -252,7 +255,7 @@ export default {
     return {
       countries: [],
       states: [],
-      departements: [],
+      departments: [],
       cities: [],
       form: {
         first_name: "",
@@ -271,7 +274,7 @@ export default {
   },
   created() {
     this.getCountries();
-
+    this.getDepartments();
   },
   methods: {
     getCountries() {
@@ -289,6 +292,26 @@ export default {
         .get("/api/employees/" + this.form.country_id + "/states")
         .then((res) => {
           this.states = res.data;
+        })
+        .catch((error) => {
+          console.log("Error");
+        });
+    },
+    getCities() {
+      axios
+        .get("/api/employees/" + this.form.state_id + "/cities")
+        .then((res) => {
+          this.cities = res.data;
+        })
+        .catch((error) => {
+          console.log("Error");
+        });
+    },
+    getDepartments() {
+      axios
+        .get("/api/employees/departments")
+        .then((res) => {
+          this.departments = res.data;
           console.log(res.data)
         })
         .catch((error) => {
