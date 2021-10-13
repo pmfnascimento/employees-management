@@ -37,7 +37,7 @@
                     </div>
 
                     <div class="col-4">
-                      <select class="form-control" id="state" autofocus>
+                      <select class="form-control" id="state" autofocus v-model="selectDepartment">
                         <option
                           v-for="department in departments"
                           :key="department.id"

@@ -19,14 +19,12 @@ class EmployeeController extends Controller
     public function index(Request $request)
     {
         $employees = Employee::all();
-
-        if($request->search){
-            $employees = Employee::where('name','like','%{$request->search}%')->get();
-        }else if($request->department_id){
-            $employees = Employee::where('name','like','%{$request->search}%')->get();
+        if($request['search']){
+            $employees = Employee::where("first_name","like","%{$request['search']}%")
+            ->orWhere('last_name',"like","%{$request['search']}%")->get();
+        }else if($request['department_id']){
+            $employees = Employee::where('department_id',$request->department_id)->get();
         }
-
-
 
         return EmployeeResource::collection($employees);
     }
