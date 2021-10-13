@@ -16,7 +16,7 @@
         >
       </div>
       <div class="card-body">
-        <form method="POST" action="">
+        <form @submit.prevent="storeEmployee">
           <div class="form-group row">
             <label
               for="first_name"
@@ -247,6 +247,7 @@
 
 <script>
 import Datepicker from "vuejs-datepicker";
+import moment from "moment";
 export default {
   components: {
     Datepicker,
@@ -318,6 +319,33 @@ export default {
           console.log("Error");
         });
     },
+    storeEmployee(){
+        axios
+        .post("/api/employees", {
+            'first_name': this.form.first_name,
+            'middle_name': this.form.middle_name,
+            'last_name': this.form.last_name,
+            'address': this.form.address,
+            'state_id': this.form.state_id,
+            'country_id': this.form.country_id,
+            'city_id': this.form.city_id,
+            'department_id': this.form.department_id,
+            'zip_code': this.form.zip_code,
+            'birthdate': this.format_date(this.form.birthdate),
+            'date_hired': this.format_date(this.form.date_hired)
+        })
+        .then((res) => {
+          this.$router.push({name: 'EmployeesIndex'});
+        })
+        .catch((error) => {
+          console.log("Error");
+        });
+    },
+    format_date(value){
+        if(value){
+            return moment(String(value)).format('YYYYMMDD')
+        }
+    }
   },
 };
 </script>

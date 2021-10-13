@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use App\Models\Employee;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\EmployeeStoreRequest;
+use App\Http\Resources\EmployeeResource;
+use App\Http\Resources\EmployeeSingleResource;
 
 class EmployeeController extends Controller
 {
@@ -14,7 +18,9 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        $employees = Employee::all();
+
+        return EmployeeResource::collection($employees);
     }
 
     /**
@@ -33,9 +39,10 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EmployeeStoreRequest $request)
     {
-        //
+        $employee = Employee::create($request->validated());
+        return response()->json($employee);
     }
 
     /**
@@ -44,9 +51,9 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Employee $employee)
     {
-        //
+        return new EmployeeSingleResource($employee);
     }
 
     /**
@@ -67,19 +74,20 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EmployeeStoreRequest $request, Employee $employee)
     {
-        //
+        $employee->update($request->validated());
+        return response()->json('_Employee Updated Successfully');
     }
-
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $employee
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Employee $employee)
     {
-        //
+        $employee->delete();
+        return response()->json('Employee Deleted Successfully');
     }
 }

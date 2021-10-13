@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Models\City;
 use App\Models\State;
 use App\Models\Country;
 use App\Models\Department;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class EmployeeDataController extends Controller
 {
@@ -34,6 +34,4 @@ class EmployeeDataController extends Controller
         $departments = Department::all();
         return response()->json($departments);
     }
-
-
 }
